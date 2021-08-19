@@ -18,8 +18,8 @@ donde haya > ponemos <.
 
 */
 
-//CAMBIAR EL MAIN CUANDO LO PASE A ROOT
-int main() {
+
+void sort() {
 	std::vector<float> elementos{  1, 145, 75, 5 ,21, 71, 34, 55, 23, 20, 100, 33};
 
 	std::cout << "El conjunto inicial es: " << std::endl;
@@ -71,6 +71,4 @@ int main() {
 		std::cout << elementos[i] << ", ";
 	}
 
-
-	return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 
-//Cambiar el main cuando lo pase a root.
-int main(){
+
+void factorial(){
 int x;
 char DNuevo = 'y';
 while (DNuevo == 'y') {
@@ -14,8 +14,7 @@ while (DNuevo == 'y') {
 		}
 	}
 	std::cout << "El factorial de " << x << " es " << fact << std::endl;
-	std::cout << "¡Desea calcular otro factorial? (y/n) " << std::endl;
+	std::cout << "Â¿Desea calcular otro factorial? (y/n) " << std::endl;
 	std::cin >> DNuevo;
 	}
-return 0;
 }

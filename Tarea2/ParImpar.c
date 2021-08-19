@@ -1,7 +1,7 @@
 #include <iostream>
 
-//Cambiar el main cuando lo pase a root.
-int main() {
+
+void ParImpar() {
 	int x;
 	char DNuevo = 'y';
 	while (DNuevo == 'y') {
@@ -14,8 +14,8 @@ int main() {
 		else {
 			std::cout << "Su numero es impar" << std::endl;
 		}
-		std::cout << "¿Desea probar otro numero? (y/n) " << std::endl;
+		std::cout << "Â¿Desea probar otro numero? (y/n) " << std::endl;
 		std::cin >> DNuevo;
 	}
-	return 0;
+	
 }
