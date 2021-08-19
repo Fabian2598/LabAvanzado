@@ -1,1 +1,4 @@
-LinkClase.txt
+Tarea2/.vs
+
+#ignore all .exe
+*.exe
