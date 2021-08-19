@@ -3,9 +3,9 @@
 //Cambiar el main cuando lo pase a root.
 int main() {
 	int x;
-	std::cout << "Digite un numero entero " << std::endl; //No pongo acentos.
 	char DNuevo = 'y';
 	while (DNuevo == 'y') {
+		std::cout << "Digite un numero entero " << std::endl; //No pongo acentos.
 		int fact = 1;
 		std::cin >> x;
 		if ((x%2) == 0) {
