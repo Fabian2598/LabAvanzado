@@ -65,6 +65,7 @@ arbol->SetBranchAddress("CalibratedCharge", &Charge);
 arbol->SetBranchAddress("FLAGS", &Flag);
 for(Int_t i=0;i<entradas;i++){
     arbol->GetEntry(i);
+    //Guardamos las cargas en los arreglos
     if (ChannelInfo == 69){
         CargaF14A.push_back(Charge);
         if (Flag == 0){
@@ -80,18 +81,22 @@ for(Int_t i=0;i<entradas;i++){
 }
 
 
-int Bins = 500;
+int Bins = 500; //Se puede cambiar el número de bins.
 
+//Esto nos ayuda a encontrar el elemento máximo de un arreglo. Lo colocamos por si se desea graficar el histograma
+//hasta el rango máximo posible de valores.
 double maxh1 = *std::max_element(CargaF14A.begin(), CargaF14A.end());
 double maxh2 = *std::max_element(CargaF14A_CS.begin(), CargaF14A_CS.end());
 double maxh3 = *std::max_element(CargaH13C.begin(), CargaH13C.end());
 double maxh4 = *std::max_element(CargaH13C_CS.begin(), CargaH13C_CS.end());
 
+//Definimos a los histogramas
 TH1D *h1 = new TH1D("F14A_SS","Distribucion de carga, F14A sin seleccion; Carga; Cuentas",Bins,0,10);
 TH1D *h2 = new TH1D("F14A_CS","Distribucion de carga, F14A con seleccion; Carga; Cuentas",Bins,0,10);
 TH1D *h3 = new TH1D("H13C_SS","Distribucion de carga, H13C sin seleccion; Carga; Cuentas",Bins,0,10);
 TH1D *h4 = new TH1D("H13_CS","Distribucion de carga, H13C con seleccion; Carga; Cuentas",Bins,0,10);
 
+//Debemos guardar cada elemento de los arreglos en los objetos h para graficar el histograma.
 for (int i=0; i<CargaF14A.size(); i++){
     h1->Fill(CargaF14A[i]);
 }
@@ -111,9 +116,9 @@ for (int i=0; i<CargaH13C_CS.size(); i++){
 
 TCanvas *cs = new TCanvas("cs","canvas");
 
-//cs->SetLogx();
+//cs->SetLogx(); //Por si se desea poner escala logarítmica
 h1->Draw();
-cs->SaveAs("F14A_SS.png");
+cs->SaveAs("F14A_SS.png"); //Guardamos los histogramos.
 h2->Draw();
 cs->SaveAs("F14A_CS.png");
 h3->Draw();
