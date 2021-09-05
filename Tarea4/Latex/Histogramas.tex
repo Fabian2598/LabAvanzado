@@ -40,6 +40,7 @@
 \rhead{Tarea 4. Histogramas}
 \begin{document}
 
+Las respuestas a las primeras dos preguntas se encuentran en el código que se llama Prob3.C.
 
 \textbf{Inciso 3)}
 \begin{figure}[H]
@@ -80,7 +81,7 @@
 \label{fig:Prob5-2}
 \end{figure}
 
-
+El resultado no es exactamente igual para ambos eventos, pero las diferencias son mínimas. 
 \textbf{Inciso 6)}
 
 
@@ -91,7 +92,7 @@
 \label{fig:Prob6}
 \end{figure}
 
-Se observa que en la mayoría de los casos las fluctuaciones se encuentran por debajo de 4 kHz, que es un orden de magnitud menor al de las tasa de fluctuaciones, las cuales son del orden de 10 kHz. Sólo hay una situación en la que hay una excepción, en el cual se aprecia un pico que está por arriba de 10 kHz entre el PMT de ID 200 y el de ID 400. En dicho caso posiblemente lo que sucedió es que en el primer o último evento, no se usó un PMT que en el otro evento sí se ocupó y por lo tanto al restar los histogramas obtenemos un pico que sobresale. 
+Se observa que en la mayoría de los casos las fluctuaciones se encuentran por debajo de 4 kHz, que es un orden de magnitud menor al de las tasas de conteo, las cuales son del orden de 10 kHz. Sólo hay una situación en la que hay una excepción, en donde se aprecia un pico que está por arriba de 10 kHz entre el PMT de ID 200 y el de ID 400. En dicho caso posiblemente lo que sucedió es que en el primer o último evento, no se usó un PMT que en el otro evento sí se ocupó y por lo tanto al restar los histogramas obtenemos un pico que sobresale. 
 
 \textbf{Inciso 7)}
 
@@ -121,7 +122,9 @@ Se observa que en la mayoría de los casos las fluctuaciones se encuentran por d
 \label{fig:Prob7-2}
 \end{figure}
 
-\textbf{Calcula la tasa de conteo de muones esperada en un detector de HAWC}
+Observamos que la tasa de conteo de coincidencias triples disminuye respecto a la tasa de conteo de las coincidencias dobles y a su vez, la tasa de conteo de coincidencias cuádruples disminuye respecto a la tasa de conteo de las coincidencias triples. Esto tiene sentido, ya que es más probable que dos detectores registren una medición en coincidencia, a que lo hagan cuatro detectores. Observamos que para el primer y último evento, los órdenes de magnitud de las tasas de conteo son similares entre sí. Los resultados de los subruns también son similares a los datos que se analizaron del archivo tdcscaler\_run009776\_00692.root.
+
+\textbf{Inciso 8) Calcula la tasa de conteo de muones esperada en un detector de HAWC}
 
 De acuerdo con los datos proporcionados en la clase, la intensidad del detector es $I=70\, \frac{1}{\textrm{m$^2$ $\cdot$ s$\cdot$ sr}}$. Considerando la geometría de la figura \ref{fig:detector}, observamos que el ángulo sólido de detección es \begin{equation}
 \Omega = \frac{A}{h^2} = \frac{\pi (3.75\,\textrm{m})^2}{4.5\,\textrm{m}},
