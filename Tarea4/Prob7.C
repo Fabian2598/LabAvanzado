@@ -56,23 +56,22 @@ void Prob7(){
     arbol4->SetBranchAddress("scaler.multiplicity3Count", m3CountSub4);
     arbol4->SetBranchAddress("scaler.multiplicity4Count", m4CountSub4);
 
-
-   
 //******************* Llenado de histogramas ********************//
     //Basta con cambiar el número de entrada y el nombre de los archivos en donde se van a guardas los histogramas.
-    arbol1-> GetEntry(0); //Cada archivo tiene a lo más 5,000 entradas. 
-    arbol2-> GetEntry(0); 
-    arbol3-> GetEntry(0); 
-    arbol4-> GetEntry(0); 
+    arbol1-> GetEntry(4999); //Cada archivo tiene a lo más 5,000 entradas. 
+    arbol2-> GetEntry(4999); 
+    arbol3-> GetEntry(4999); 
+    arbol4-> GetEntry(4999); 
+
     //Nombre de los archivos que se van a guardar.
-    const char NameFile1[ ] = "CoinDoblesSubruns.pdf";
-    const char NameFile2[ ] = "CoinTriplesSubruns.pdf";
-    const char NameFile3[ ] = "CoinCuadruplesSubruns.pdf";
+    const char NameFile1[ ] = "CoinDoblesSubrunsUE.pdf";
+    const char NameFile2[ ] = "CoinTriplesSubrunsUE.pdf";
+    const char NameFile3[ ] = "CoinCuadruplesSubrunsUE.pdf";
 
     //Títulos de las gráficas
-    const char Tit1[ ] = "Tasa de coincidencias multiples por detector. Primer evento.";
-    const char Tit2[ ] = "Tasa de coincidencias triples por detector. Primer evento.";
-    const char Tit3[ ] = "Tasa de coincidencias cuadruples por detector. Primer evento.";
+    const char Tit1[ ] = "Tasa de coincidencias multiples por detector. Ultimo evento.";
+    const char Tit2[ ] = "Tasa de coincidencias triples por detector. Ultimo evento.";
+    const char Tit3[ ] = "Tasa de coincidencias cuadruples por detector. Ultimo evento.";
 
 
     //Notación hmiSubj = histograma de coincidencias i subrun j
@@ -84,27 +83,27 @@ void Prob7(){
 
     //*********SubRun1*********//
     for(int i =0; i<nTanksSub1; i++){
-        TC2Sub1[i] = m2CountSub1[i]/(binWidthSub1*1e-3)*0.001; //Coincidencias múltiples KHz
-        TC3Sub1[i] = m3CountSub1[i]/(binWidthSub1*1e-3)*0.001; //Coincidencias triples KHz
-        TC4Sub1[i] = m4CountSub1[i]/(binWidthSub1*1e-3)*0.001; //Coincidencias dobles KHz
+        TC2Sub1[i] = m2CountSub1[i]/(binWidthSub1); //Coincidencias múltiples KHz
+        TC3Sub1[i] = m3CountSub1[i]/(binWidthSub1); //Coincidencias triples KHz
+        TC4Sub1[i] = m4CountSub1[i]/(binWidthSub1); //Coincidencias dobles KHz
     } 
     //Declarando histogramas
     TH1F *hm2Sub1 = new TH1F("ConteoDobleSub1","Tasa de conteo de coincidencias dobles por tanque. Subrun1; Tank ID; Conteo [Khz]",300-1,1,300);
     TH1F *hm3Sub1 = new TH1F("ConteoTripleSub1","Tasa de conteo de coincidencias triples por tanque. Subrun1; Tank ID; Conteo [Khz]",300-1,1,300);
     TH1F *hm4Sub1 = new TH1F("ConteoCuadrupleSub1","Tasa de conteo de coincidencias cuadruples por tanque. Subrun1; Tank ID; Conteo [Khz]",300-1,1,300);
-
+   
     //Llenando histogramas
     for (int i=0; i<nTanksSub1; i++){
-      hm2Sub1->SetBinContent(tankIDSub1[i],m2CountSub1[i]);
-      hm3Sub1->SetBinContent(tankIDSub1[i],m3CountSub1[i]);
-      hm4Sub1->SetBinContent(tankIDSub1[i],m4CountSub1[i]);
+      hm2Sub1->SetBinContent(tankIDSub1[i],TC2Sub1[i]);
+      hm3Sub1->SetBinContent(tankIDSub1[i],TC3Sub1[i]);
+      hm4Sub1->SetBinContent(tankIDSub1[i],TC4Sub1[i]);
     }
 
     //*********SubRun2*********//
     for(int i =0; i<nTanksSub2; i++){
-        TC2Sub2[i] = m2CountSub2[i]/(binWidthSub2*1e-3)*0.001; //Coincidencias múltiples KHz
-        TC3Sub2[i] = m3CountSub2[i]/(binWidthSub2*1e-3)*0.001; //Coincidencias triples KHz
-        TC4Sub2[i] = m4CountSub2[i]/(binWidthSub2*1e-3)*0.001; //Coincidencias dobles KHz
+        TC2Sub2[i] = m2CountSub2[i]/(binWidthSub2); //Coincidencias múltiples KHz
+        TC3Sub2[i] = m3CountSub2[i]/(binWidthSub2); //Coincidencias triples KHz
+        TC4Sub2[i] = m4CountSub2[i]/(binWidthSub2); //Coincidencias dobles KHz
     } 
     //Declarando histogramas
     TH1F *hm2Sub2 = new TH1F("ConteoDobleSub2","Tasa de conteo de coincidencias dobles por tanque. Subrun2; Tank ID; Conteo [Khz]",300-1,1,300);
@@ -113,17 +112,17 @@ void Prob7(){
 
     //Llenando histogramas
     for (int i=0; i<nTanksSub2; i++){
-      hm2Sub2->SetBinContent(tankIDSub2[i],m2CountSub2[i]);
-      hm3Sub2->SetBinContent(tankIDSub2[i],m3CountSub2[i]);
-      hm4Sub2->SetBinContent(tankIDSub2[i],m4CountSub2[i]);
+      hm2Sub2->SetBinContent(tankIDSub2[i],TC2Sub2[i]);
+      hm3Sub2->SetBinContent(tankIDSub2[i],TC3Sub2[i]);
+      hm4Sub2->SetBinContent(tankIDSub2[i],TC4Sub2[i]);
     }
 
 
     //*********SubRun3*********//
     for(int i =0; i<nTanksSub3; i++){
-        TC2Sub3[i] = m2CountSub3[i]/(binWidthSub3*1e-3)*0.001; //Coincidencias múltiples KHz
-        TC3Sub3[i] = m3CountSub3[i]/(binWidthSub3*1e-3)*0.001; //Coincidencias triples KHz
-        TC4Sub3[i] = m4CountSub3[i]/(binWidthSub3*1e-3)*0.001; //Coincidencias dobles KHz
+        TC2Sub3[i] = m2CountSub3[i]/(binWidthSub3); //Coincidencias múltiples KHz
+        TC3Sub3[i] = m3CountSub3[i]/(binWidthSub3); //Coincidencias triples KHz
+        TC4Sub3[i] = m4CountSub3[i]/(binWidthSub3); //Coincidencias dobles KHz
     } 
     //Declarando histogramas
     TH1F *hm2Sub3 = new TH1F("ConteoDobleSub3","Tasa de conteo de coincidencias dobles por tanque. Subrun3; Tank ID; Conteo [Khz]",300-1,1,300);
@@ -132,17 +131,17 @@ void Prob7(){
 
     //Llenando histogramas
     for (int i=0; i<nTanksSub3; i++){
-      hm2Sub3->SetBinContent(tankIDSub3[i],m2CountSub3[i]);
-      hm3Sub3->SetBinContent(tankIDSub3[i],m3CountSub3[i]);
-      hm4Sub3->SetBinContent(tankIDSub3[i],m4CountSub3[i]);
+      hm2Sub3->SetBinContent(tankIDSub3[i],TC2Sub3[i]);
+      hm3Sub3->SetBinContent(tankIDSub3[i],TC3Sub3[i]);
+      hm4Sub3->SetBinContent(tankIDSub3[i],TC4Sub3[i]);
     }
 
 
     //*********SubRun4*********//
     for(int i =0; i<nTanksSub4; i++){
-        TC2Sub4[i] = m2CountSub4[i]/(binWidthSub4*1e-3)*0.001; //Coincidencias múltiples KHz
-        TC3Sub4[i] = m3CountSub4[i]/(binWidthSub4*1e-3)*0.001; //Coincidencias triples KHz
-        TC4Sub4[i] = m4CountSub4[i]/(binWidthSub4*1e-3)*0.001; //Coincidencias dobles KHz
+        TC2Sub4[i] = m2CountSub4[i]/(binWidthSub4); //Coincidencias múltiples KHz
+        TC3Sub4[i] = m3CountSub4[i]/(binWidthSub4); //Coincidencias triples KHz
+        TC4Sub4[i] = m4CountSub4[i]/(binWidthSub4); //Coincidencias dobles KHz
     } 
 
     //Declarando histogramas
@@ -152,9 +151,9 @@ void Prob7(){
 
     //Llenando histogramas
     for (int i=0; i<nTanksSub4; i++){
-      hm2Sub4->SetBinContent(tankIDSub4[i],m2CountSub4[i]);
-      hm3Sub4->SetBinContent(tankIDSub4[i],m3CountSub4[i]);
-      hm4Sub4->SetBinContent(tankIDSub4[i],m4CountSub4[i]);
+      hm2Sub4->SetBinContent(tankIDSub4[i],TC2Sub4[i]);
+      hm3Sub4->SetBinContent(tankIDSub4[i],TC3Sub4[i]);
+      hm4Sub4->SetBinContent(tankIDSub4[i],TC4Sub4[i]);
     }
 
 //****************** Gráficas ******************//
