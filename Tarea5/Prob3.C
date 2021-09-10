@@ -58,6 +58,7 @@ void Prob3(){
 
     h1->Draw();
     cvEv1->cd(1);
+    cvEv1->SaveAs("Prob32Edge.pdf");
 
     auto cvEv2 = new TCanvas("cb2","hist2",1100,800);
     TH1F *h2 = new TH1F("h2","Numero de evento vs. frecuencia de hits de 4 edges; No. evento; Frecuencia [MHz]",entradas-1,1,entradas); 
@@ -72,13 +73,20 @@ void Prob3(){
     h2->SetBarWidth(1);
     h2->Draw();
     cvEv2->cd(1);
-    cvEv2->SaveAs("Test.pdf");
-    //auto cv = new TCanvas("cb3","hist3",1100,800);
+    cvEv2->SaveAs("Prob34Edge.pdf");
+    
+    auto cv = new TCanvas("cb3","hist3",1100,800);
     //gStyle->SetOptTitle(0);
+    TH1F *h3 = new TH1F("h3","Numero de evento vs. frecuencia de hits de 2 y 4 edges; No. evento; Frecuencia [MHz]",entradas-1,1,entradas); 
+   
+    h3->SetStats(0);
+    for(int i=0; i<entradas; i++){
+        h3->SetBinContent(i+1,Freq2Edge[i]+Freq4Edge[i]);
+    } 
+    h3->SetBarWidth(1);
+    h3->Draw();
+    cv->cd(1);
+    cv->SaveAs("Prob32y4Edge.pdf");
 
-
-    //h1->Draw();
-    //h2->Draw("same");
-    //cv->cd(1);
 
 }
