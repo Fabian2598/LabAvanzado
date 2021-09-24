@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx} 
+\usepackage{parskip} 
+\usepackage{multirow} 
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+\usepackage{multicol} 
+\usepackage[spanish,es-nodecimaldot]{babel} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage[spanish]{babel}
+\usepackage{gensymb}
+\def\sen{\mathop{\mbox{\normalfont sen}}\nolimits}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\rfoot{\thepage}
+\pagestyle{fancy}
+\lhead{Nieto Castellanos Jaime Fabián}
+\chead{}
+\rhead{Tarea 6. Histogramas}
+\begin{document}
+
+\textbf{Problema 1}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1 \textwidth]{../Figuras/Prob1}
+\caption{Histogramas bidimensional que muestra las posiciones de los núcleos de las cascadas atmosféricas. Se hizo un corte de selección.}
+\label{fig:Prob1}
+\end{figure}
+\textbf{Problema 2}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1 \textwidth]{../Figuras/Prob2}
+\caption{Histogramas bidimensional que muestra las direcciones, en coordenadas celestes, de los núcleos de las cascadas atmosféricas. Se hizo un corte de selección.}
+\label{fig:Prob2}
+\end{figure}
+
+\pagebreak
+
+\textbf{Problema 3}
+\begin{figure}[H]
+\centering
+
+\subfloat[Distribución del número de hits a 10 ns]{\includegraphics[width=1\textwidth]{../Figuras/Prob310Ns}}
+
+\subfloat[Distribución del número de hits a 20 ns]{\includegraphics[width=1\textwidth]{../Figuras/Prob320Ns}}
+\caption{Distribución del número de hits de todos los eventos.}
+\end{figure}
+
+\textbf{A) ¿Con qué frecuencia [Hz] se detectan cascadas con >100 hits a 10 ns del frente de la cascada?}
+
+\textbf{B) ¿Con qué frecuencia [Hz] se detectan cascadas con >100 hits a 10 ns del frente de la cascada?}
+\pagebreak
+
+\textbf{Problema 4}
+\textbf{a)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../Figuras/Prob4A}
+\caption{Distribución del ángulo cenital para todos los eventos sin corte de selección}
+\label{fig:Prob4A}
+\end{figure}
+En la figura \ref{fig:Prob4A} se observa que hay un pico muy grande cercano a 180°, lo cual resulta extraño. Sin embargo, lo más posible es que ese pico sea un problema al momento de reconstruir el ángulo cenital, ya que al hacer el corte de calidad (figura \ref{fig:Prob4B}) el pico ya no se observa. 
+
+\textbf{b)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../Figuras/Prob4B}
+\caption{Distribución del ángulo cenital para todos los eventos con corte de selección}
+\label{fig:Prob4B}
+\end{figure}
+\pagebreak
+
+\textbf{Problema 5}
+\textbf{a)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../Figuras/Prob5A}
+\caption{Distribución del ángulo azimutal para todos los eventos sin corte de selección}
+\label{fig:Prob5A}
+\end{figure}
+En la figura \ref{fig:Prob5A} se observa que hay un pico muy grande cercano a 60°. Nuevamente, lo más posible es que ese pico sea un problema al momento de reconstruir el ángulo azimutal, ya que al hacer el corte de calidad (figura \ref{fig:Prob4B}) el pico ya no se observa. Además, la distribución es simétrica en vez de ser uniforme como uno esperaría, pues en principio podrían llegar cascadas atmosféricas desde cualquier dirección. No obstante, el campo magnético de la Tierra puede alterar las trayectorias de alguna partículas, haciendo que haya direcciones aparentemente preferenciales.
+
+\textbf{b)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../Figuras/Prob5B}
+\caption{Distribución del ángulo azimutal para todos los eventos con corte de selección}
+\label{fig:Prob5B}
+\end{figure}
+
+
+
+\end{document}
