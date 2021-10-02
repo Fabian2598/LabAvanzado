@@ -26,8 +26,12 @@ void Prob4(){
 
     ULong64_t coreFitStatus; //Calidad del ajuste de reconstrucción del núcleo, 0 significa buen ajuste.
     arbol->SetBranchAddress("rec.coreFitStatus", &coreFitStatus);
+
+    ULong64_t isSelected[1860];
+    arbol->SetBranchAddress("stdCuts.isSelected", isSelected);
  
     Int_t entradas = arbol->GetEntries();
+    
     
     Int_t N = 10; //Este evento es mediano
     arbol->GetEntry(N); 
@@ -43,7 +47,7 @@ void Prob4(){
     Int_t n = nHit;
     auto gr = new TGraphErrors();  gr->SetMarkerColor(8); gr->SetMarkerSize(0.6); gr->SetMarkerStyle(8);
     for(int i=0; i<nHit; i++){
-        if (channelIsGood[i]==1 && coreFitStatus == 0){
+        if (channelIsGood[i]==1 && isSelected[i] == 1){
             gr->SetPoint(i,TMath::Sqrt( TMath::Power(coreX-xPMT[i],2) + TMath::Power(coreY-yPMT[i],2) ),log10(charge[i]));
             gr->SetPointError(i,0,0.3 - 0.0667*log10(charge[i]));
         }
@@ -60,7 +64,7 @@ void Prob4(){
    
    //Texto
    TPaveText *pt = new TPaveText(40, 2.7, 150, 4); //xini, yini, xfin, yfin. No están normalizadas las coordenadas
-   pt->AddText("Se eligen eventos tales que coreFitStatus sea cero (buena reconstrucci#acute{o}n angular)"); 
+   pt->AddText("Se eligen eventos tales que stdCuts.isSelected sea igual a 1 para que satisfaga cortes standard"); 
    pt->AddText("y que los hits sean de buena se#tilde{n}al, i.e. que la variable channelIsGood sea uno.");
    pt->Draw();
 
@@ -97,7 +101,7 @@ void Prob4(){
     n = nHit;
     auto gr2 = new TGraphErrors();  gr2->SetMarkerColor(8); gr2->SetMarkerSize(0.6); gr2->SetMarkerStyle(8);
     for(int i=0; i<nHit; i++){
-        if (channelIsGood[i]==1 && coreFitStatus == 0){
+        if (channelIsGood[i]==1 && isSelected[i] == 1){
             gr2->SetPoint(i,TMath::Sqrt( TMath::Power(coreX-xPMT[i],2) + TMath::Power(coreY-yPMT[i],2) ),log10(charge[i]));
             gr2->SetPointError(i,0,0.3 - 0.0667*log10(charge[i]));
         }
@@ -114,23 +118,23 @@ void Prob4(){
    
    //Texto
    TPaveText *pt2 = new TPaveText(40, 2.7, 150, 4); //xini, yini, xfin, yfin. No están normalizadas las coordenadas
-   pt2->AddText("Se eligen eventos tales que coreFitStatus sea cero (buena reconstrucci#acute{o}n angular)"); 
+   pt2->AddText("Se eligen eventos tales que stdCuts.isSelected sea igual a 1 para que satisfaga cortes standard"); 
    pt2->AddText("y que los hits sean de buena se#tilde{n}al, i.e. que la variable channelIsGood sea uno.");
    pt2->Draw();
 
   //Función que vamos a ajustar.
-   //TF1 *f1 = new TF1("f1","[0]*exp([1]*x)",10,110);
-   f1->SetParNames("a","b");
-   f1->SetParameters(3.3,-0.03);
+   TF1 *f2 = new TF1("f2","[0]*exp([1]*x)",10,110);
+   f2->SetParNames("a","b");
+   f2->SetParameters(3.3,-0.03);
    //Para hacer ajustes de un sólo parámetro escribimos f1->SetParameters(0,Valor del parámetro)
 
-   gr2->Fit("f1","E","",0,135);
-   fitResult = gr2->GetFunction("f1");
+   gr2->Fit("f2","E","",0,135);
+   fitResult = gr2->GetFunction("f2");
    std::cout << "Para una funcion de la forma a*exp(b x), los parametros que mejor se ajustan son" << std::endl;
    std::cout << "a = " << fitResult->GetParameter(0) << std::endl;
    std::cout << "b = " << fitResult->GetParameter(1) << std::endl;
    std::cout << "" << std::endl;
-   f1->Draw("Same");
+   f2->Draw("Same");
    cvEv2->cd(1);
    cvEv2->SaveAs("Prob4B.pdf");
 
@@ -152,7 +156,7 @@ void Prob4(){
     n = nHit;
     auto gr3 = new TGraphErrors();  gr3->SetMarkerColor(8); gr3->SetMarkerSize(0.6); gr3->SetMarkerStyle(8);
     for(int i=0; i<nHit; i++){
-        if (channelIsGood[i]==1 && coreFitStatus == 0){
+        if (channelIsGood[i]==1 && isSelected[i] == 1){
             gr3->SetPoint(i,TMath::Sqrt( TMath::Power(coreX-xPMT[i],2) + TMath::Power(coreY-yPMT[i],2) ),log10(charge[i]));
             gr3->SetPointError(i,0,0.3 - 0.0667*log10(charge[i]));
         }
@@ -169,23 +173,23 @@ void Prob4(){
    
    //Texto
    TPaveText *pt3 = new TPaveText(40, 2.7, 150, 4); //xini, yini, xfin, yfin. No están normalizadas las coordenadas
-   pt3->AddText("Se eligen eventos tales que coreFitStatus sea cero (buena reconstrucci#acute{o}n angular)"); 
+   pt3->AddText("Se eligen eventos tales que stdCuts.isSelected sea igual a 1 para que satisfaga cortes standard"); 
    pt3->AddText("y que los hits sean de buena se#tilde{n}al, i.e. que la variable channelIsGood sea uno.");
    pt3->Draw();
 
   //Función que vamos a ajustar.
-   //TF1 *f1 = new TF1("f1","[0]*exp([1]*x)",10,110);
-   f1->SetParNames("a","b");
-   f1->SetParameters(3.3,-0.03);
+   TF1 *f3 = new TF1("f3","[0]*exp([1]*x)",10,110);
+   f3->SetParNames("a","b");
+   f3->SetParameters(3.3,-0.03);
    //Para hacer ajustes de un sólo parámetro escribimos f1->SetParameters(0,Valor del parámetro)
 
-   gr3->Fit("f1","E","",20,200);
-   fitResult = gr3->GetFunction("f1");
+   gr3->Fit("f3","E","",20,200);
+   fitResult = gr3->GetFunction("f3");
    std::cout << "Para una funcion de la forma a*exp(b x), los parametros que mejor se ajustan son" << std::endl;
    std::cout << "a = " << fitResult->GetParameter(0) << std::endl;
    std::cout << "b = " << fitResult->GetParameter(1) << std::endl;
    std::cout << "" << std::endl;
-   f1->Draw("Same");
+   f3->Draw("Same");
    cvEv3->cd(1);
    cvEv3->SaveAs("Prob4C.pdf");
 /*
