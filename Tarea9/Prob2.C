@@ -23,7 +23,7 @@ void Prob2(){
     arbol->SetBranchAddress("event.nHit", &nHit);
 
 //*************Zenith, dividiendo por número de eventos************//
-    Int_t bins = 50; //Número de bins del histograma.
+    Int_t bins = 100; //Número de bins del histograma.
     Int_t mR = 10; //Rango máximo sobre el cual vamos a graficar.
 
     auto cv1 = new TCanvas("cb1","hist1",700,550);
@@ -38,12 +38,14 @@ void Prob2(){
     h1->SetFillColorAlpha(9,0.6);
     h1->SetBarWidth(1);
     h1->SetStats(0);
+    h1->GetYaxis()->SetRangeUser(0,1200);
     h1->Draw();
 
     h2->SetLineColor(kOrange+1);
     h2->SetFillColorAlpha(kOrange+1,0.6);
     h2->SetBarWidth(1);
     h2->SetStats(0);
+    h2->GetYaxis()->SetRangeUser(0,1200);
     h2->Draw("Same");
     
 
@@ -118,12 +120,14 @@ void Prob2(){
     h5->SetFillColorAlpha(kViolet+1,0.6);
     h5->SetBarWidth(1);
     h5->SetStats(0);
+    h5->GetYaxis()->SetRangeUser(0,650);
     h5->Draw();
 
     h6->SetLineColor(kTeal-9);
     h6->SetFillColorAlpha(kTeal-9,0.6);
     h6->SetBarWidth(1);
     h6->SetStats(0);
+    h6->GetYaxis()->SetRangeUser(0,650);
     h6->Draw("Same");
     
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
