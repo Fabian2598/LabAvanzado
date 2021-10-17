@@ -49,12 +49,16 @@ void Prob2(){
     h2->Draw("Same");
     
 
+    std::cout << "" << std::endl;
+    std::cout << "RMS res. ang. cenital nhits<100 " << h1->GetRMS() << std::endl;
+    std::cout << "RMS res. ang. cenital nhits>100 " << h2->GetRMS() << std::endl;
+
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
 
-    auto legend = new TLegend(0.7,0.7,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend->SetHeader("nHits","C");
-    legend->AddEntry(h1,"nHits < 100");
-    legend->AddEntry(h2,"nHits > 100");
+    legend->AddEntry(h1,"nHits < 100 RMS = 1.55#circ ");
+    legend->AddEntry(h2,"nHits > 100 RMS = 1.02#circ ");
     legend->Draw();
 
     //Para agregar el título del histograma.
@@ -88,13 +92,17 @@ void Prob2(){
     h4->SetBarWidth(1);
     h4->SetStats(0);
     h4->Draw("Same");
+
+    std::cout << "" << std::endl;
+    std::cout << "RMS res. ang. cenital Fiduscale<100 " << h3->GetRMS() << std::endl;
+    std::cout << "RMS res. ang. cenital Fiduscale<50 " << h4->GetRMS() << std::endl;
     
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
 
-    auto legend2 = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend2 = new TLegend(0.5,0.5,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend2->SetHeader("coreFiduScale","C");
-    legend2->AddEntry(h3,"coreFiduScale < 100");
-    legend2->AddEntry(h4,"coreFiduScale < 50");
+    legend2->AddEntry(h3,"coreFiduScale < 100 RMS = 1.35#circ ");
+    legend2->AddEntry(h4,"coreFiduScale < 50 RMS = 1.34#circ ");
     legend2->Draw();
 
     //Para agregar el título del histograma.
@@ -131,11 +139,12 @@ void Prob2(){
     h6->Draw("Same");
     
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
+    
 
-    auto legend3 = new TLegend(0.7,0.7,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend3 = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend3->SetHeader("nHits","C");
-    legend3->AddEntry(h5,"nHits < 100");
-    legend3->AddEntry(h6,"nHits > 100");
+    legend3->AddEntry(h5,"nHits < 100 RMS = 2.32#circ ");
+    legend3->AddEntry(h6,"nHits > 100 RMS = 1.71#circ ");
     legend3->Draw();
 
     //Para agregar el título del histograma.
@@ -147,6 +156,9 @@ void Prob2(){
     cv3->cd(1);
     cv3->SaveAs("Prob2C.pdf");
 
+    std::cout << "" << std::endl;
+    std::cout << "RMS res. ang. acimutal nhits<100 " << h5->GetRMS() << std::endl;
+    std::cout << "RMS res. ang. acimutal nhits>100 " << h6->GetRMS() << std::endl;
 
 //********Azimuth FiduScale***********//
     auto cv4 = new TCanvas("cb4","hist4",700,550);
@@ -168,13 +180,17 @@ void Prob2(){
     h8->SetBarWidth(1);
     h8->SetStats(0);
     h8->Draw("Same");
+
+    std::cout << "" << std::endl;
+    std::cout << "RMS res. ang. acimutal Fiduscale<100 " << h7->GetRMS() << std::endl;
+    std::cout << "RMS res. ang. acimutal Fiduscale<50 " << h8->GetRMS() << std::endl;
     
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
 
-    auto legend4 = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend4 = new TLegend(0.5,0.5,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend4->SetHeader("coreFiduScale","C");
-    legend4->AddEntry(h7,"coreFiduScale < 100");
-    legend4->AddEntry(h8,"coreFiduScale < 50");
+    legend4->AddEntry(h7,"coreFiduScale < 100 RMS = 2.12#circ");
+    legend4->AddEntry(h8,"coreFiduScale < 50 RMS = 2.05#circ");
     legend4->Draw();
 
     //Para agregar el título del histograma.
