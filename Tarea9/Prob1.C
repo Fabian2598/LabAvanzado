@@ -83,20 +83,22 @@ void Prob1(){
     h3->SetFillColorAlpha(9,0.6);
     h3->SetBarWidth(1);
     h3->SetStats(0);
+    std::cout << "RMS FiduScale < 100 Eje x" << h3->GetRMS() << std::endl;
     h3->Draw();
 
     h4->SetLineColor(kOrange+1);
     h4->SetFillColorAlpha(kOrange+1,0.6);
     h4->SetBarWidth(1);
     h4->SetStats(0);
+    std::cout << "RMS FiduScale < 50 Eje x" << h4->GetRMS() << std::endl;
     h4->Draw("Same");
 
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
 
-    auto legend = new TLegend(0.7,0.7,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend->SetHeader("FiduScale","C");
-    legend->AddEntry(h1,"FiduScale < 100");
-    legend->AddEntry(h2,"FiduScale < 50");
+    legend->AddEntry(h3,"FiduScale < 100 RMS = 37.75 m");
+    legend->AddEntry(h4,"FiduScale < 50 RMS = 36.27 m");
     legend->Draw();
 
     //Para agregar el título del histograma.
@@ -124,20 +126,22 @@ void Prob1(){
     h5->SetFillColorAlpha(kViolet+1,0.6);
     h5->SetBarWidth(1);
     h5->SetStats(0);
+    std::cout << "RMS FiduScale < 100 Eje y" << h5->GetRMS() << std::endl;
     h5->Draw();
 
     h6->SetLineColor(kTeal-9);
     h6->SetFillColorAlpha(kTeal-9,0.6);
     h6->SetBarWidth(1);
     h6->SetStats(0);
+    std::cout << "RMS FiduScale < 50 Eje y" << h6->GetRMS() << std::endl;
     h6->Draw("Same");
 
     gStyle->SetOptTitle(0); //Para quitar el título del histograma.
 
-    auto legend2 = new TLegend(0.7,0.7,0.9,0.9); //TLegend(x1,y1,x2,y2)
+    auto legend2 = new TLegend(0.6,0.6,0.9,0.9); //TLegend(x1,y1,x2,y2)
     legend2->SetHeader("FiduScale","C");
-    legend2->AddEntry(h5,"FiduScale < 100");
-    legend2->AddEntry(h6,"FiduScale < 50");
+    legend2->AddEntry(h5,"FiduScale < 100 RMS = 46.52 m");
+    legend2->AddEntry(h6,"FiduScale < 50 RMS = 41.64 m");
     legend2->Draw();
 
     //Para agregar el título del histograma.
