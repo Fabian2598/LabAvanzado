@@ -24,7 +24,7 @@ while(contador < maxrows){
 }
 
 
-auto cv1 = new TCanvas("cb1","hist1",600,550);
+auto cv1 = new TCanvas("cb1","hist1",850,550);
 TH1D *h1 = new TH1D("m_{0}","Masa invariante eventos con pares #mu^{-}-#mu^{+}; m_{0} [GeV/c^{2}]; Cuentas",100,0,120); 
 
 Float_t m0;  
@@ -51,7 +51,7 @@ cv1->SaveAs("Prob4A.pdf");
 
 
 //****************************//
-auto cv2 = new TCanvas("cb2","hist1",600,550);
+auto cv2 = new TCanvas("cb2","hist1",850,550);
 TH1D *h2 = new TH1D("m_{0}","Masa invariante eventos con pares #mu^{-}-#mu^{+}; m_{0} [GeV/c^{2}]; Cuentas",100,0,10); 
 
 
