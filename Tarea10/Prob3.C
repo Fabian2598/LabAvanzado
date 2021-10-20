@@ -23,9 +23,9 @@ while(contador < maxrows){
 }
 
     auto cv1 = new TCanvas("cb","hist1",850,550);
-    TH1D *h1 = new TH1D("pt","Momento transverso; P_{t} [GeV]; Cuentas",100,0,35); 
-    TH1D *h2 = new TH1D("pt2","Momento transverso muones positivos; P_{t} [GeV]; Cuentas",100,0,35); //Carga positiva
-    TH1D *h3 = new TH1D("pt3","Momento transverso muones negativos; P_{t} [GeV]; Cuentas",100,0,35); //Carga negativa
+    TH1D *h1 = new TH1D("pt","Momento transverso; P_{t} [GeV]; Cuentas",200,0,35); 
+    TH1D *h2 = new TH1D("pt2","Momento transverso muones positivos; P_{t} [GeV]; Cuentas",200,0,35); //Carga positiva
+    TH1D *h3 = new TH1D("pt3","Momento transverso muones negativos; P_{t} [GeV]; Cuentas",200,0,35); //Carga negativa
     for(int i=0; i<maxrows; i++){
         h1->Fill(Pt1[i]);
         h1->Fill(Pt2[i]);
@@ -37,32 +37,29 @@ while(contador < maxrows){
         if(Q1[i]<0){h3->Fill(Pt1[i]);}
         if(Q2[i]<0){h3->Fill(Pt2[i]);}
     }
-    h1->SetFillColorAlpha(kAzure,0.5);
+    //h1->SetFillColorAlpha(kAzure,0.5);
+    gStyle->SetOptStat(0);
     h1->SetStats(0);
-    h1->SetLineColor(kAzure);
-    h1->SetBarWidth(1);
-   // h1->GetYaxis()->SetRangeUser(0,2000);
-    h1->Draw();
+    h1->SetMarkerStyle(kFullCircle);
+    h1->SetMarkerSize(1);
+    Double_t promedio = h1->GetMean();
+    std::cout << "Promedio " << promedio << std::endl;
+    h1->Draw("PMC PLC P");
 
-    h2->SetFillColorAlpha(kRed,0.5);
+
+    h2->SetMarkerStyle(kFullSquare);
     h2->SetStats(0);
-    h2->SetLineColor(kRed);
-    h2->SetBarWidth(1);
-    //h2->GetYaxis()->SetRangeUser(0,2000);
-    h2->Draw("Same");
+    h2->Draw("SAME PMC PLC P");
 
-    h3->SetFillColorAlpha(kGreen-7,0.2);
+    h3->SetMarkerStyle(kFullTriangleUp);
     h3->SetStats(0);
-    h3->SetLineColor(kGreen-7);
-    h3->SetBarWidth(1);
-    //h3->GetYaxis()->SetRangeUser(0,2000);
-    h3->Draw("Same");
+    h3->Draw("SAME PMC PLC P");
 
     auto legend = new TLegend(0.7,0.7,0.9,0.9);
     legend->SetHeader("Muones");
-    legend->AddEntry(h1,"Todos");
-    legend->AddEntry(h2,"Positiva");
-    legend->AddEntry(h3,"Negativa");
+    legend->AddEntry(h1,"Todos. <P_{t}>=5.94655");
+    legend->AddEntry(h2,"#mu^{+}");
+    legend->AddEntry(h3,"#mu^{-}");
     legend->Draw();
 
     cv1->cd(1);

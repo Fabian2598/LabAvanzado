@@ -50,9 +50,9 @@ while(contador < maxrows){
     h2->Draw("Same");
 
     auto legend = new TLegend(0.7,0.7,0.9,0.9);
-    legend->SetHeader("Carga");
-    legend->AddEntry(h1,"Positiva");
-    legend->AddEntry(h2,"Negativa");
+    legend->SetHeader("Tipo de mu#acute{o}n");
+    legend->AddEntry(h1,"#mu^{+}");
+    legend->AddEntry(h2,"#mu^{-}");
     legend->Draw();
 
     cv1->cd(1);
@@ -86,9 +86,9 @@ while(contador < maxrows){
     h4->Draw("Same");
 
     auto legend2 = new TLegend(0.7,0.7,0.9,0.9);
-    legend2->SetHeader("Carga");
-    legend2->AddEntry(h3,"Positiva");
-    legend2->AddEntry(h4,"Negativa");
+    legend2->SetHeader("Tipo de mu#acute{o}n");
+    legend2->AddEntry(h3,"#mu^{+}");
+    legend2->AddEntry(h4,"#mu^{-}");
     legend2->Draw();
 
     cv2->cd(1);
