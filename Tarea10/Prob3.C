@@ -23,9 +23,9 @@ while(contador < maxrows){
 }
 
     auto cv1 = new TCanvas("cb","hist1",850,550);
-    TH1D *h1 = new TH1D("pt","Momento transverso; P_{t} [GeV]; Cuentas",200,0,35); 
-    TH1D *h2 = new TH1D("pt2","Momento transverso muones positivos; P_{t} [GeV]; Cuentas",200,0,35); //Carga positiva
-    TH1D *h3 = new TH1D("pt3","Momento transverso muones negativos; P_{t} [GeV]; Cuentas",200,0,35); //Carga negativa
+    TH1D *h1 = new TH1D("pt","Momento transverso; P_{t} [GeV/c]; Cuentas",200,0,35); 
+    TH1D *h2 = new TH1D("pt2","Momento transverso muones positivos; P_{t} [GeV/c]; Cuentas",200,0,35); //Carga positiva
+    TH1D *h3 = new TH1D("pt3","Momento transverso muones negativos; P_{t} [GeV/c]; Cuentas",200,0,35); //Carga negativa
     for(int i=0; i<maxrows; i++){
         h1->Fill(Pt1[i]);
         h1->Fill(Pt2[i]);
