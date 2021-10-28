@@ -1,5 +1,6 @@
 #include <iostream>
 
+//Histogramas de la significancia estimador nn (Punto 4 parte uno).
 void P4A(){
 
 const long int maxrows = 12*256*256; //Número de elementos de cada archivo.

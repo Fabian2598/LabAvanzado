@@ -1,5 +1,6 @@
 #include <iostream>
 
+//Histogramas de la signficancia de cada bin (Punto 2).
 void P2(){
 
 const long int maxrows = 12*256*256; //Número de elementos de cada archivo.
@@ -11,7 +12,6 @@ const char *Nombres[10] = {"luna_protonlhe/tabla_0.dat", "luna_protonlhe/tabla_1
 "luna_protonlhe/tabla_3.dat", "luna_protonlhe/tabla_4.dat", "luna_protonlhe/tabla_5.dat",
 "luna_protonlhe/tabla_6.dat","luna_protonlhe/tabla_7.dat","luna_protonlhe/tabla_8.dat",
 "luna_protonlhe/tabla_9.dat"};
-
 
 auto cv1 = new TCanvas("cb","hist1",850,550);
 TH1D *h0 = new TH1D("bin0","Significancia por cada bin; Significancia; Cuentas",100,-10,10); 
